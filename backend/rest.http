@@ -1,0 +1,39 @@
+### server
+GET http://localhost:5800
+
+
+### unknown route
+GET http://localhost:5800/unknown
+
+
+### create new book
+POST http://localhost:5800/api/books
+Content-Type: application/json
+
+{
+    "bookId": 1,
+    "title": "Book One",
+    "price": "100"
+}
+
+
+### get a book
+GET http://localhost:5800/api/books/1
+
+
+### get all books
+GET http://localhost:5800/api/books
+
+
+### update a book
+ PUT http://localhost:5800/api/books/1
+ Content-Type: application/json
+
+{
+    "title": "Book One",
+    "price": "300"
+}
+
+
+### delete a book
+DELETE http://localhost:5800/api/books/1
