@@ -9,7 +9,7 @@ interface BookDocument {
 const BoookSchema = new mongoose.Schema<BookDocument>(
 	{
 		bookId: { type: Number, required: true, unique: true },
-		title: { type: String, lowercase: true, trim: true, required: true },
+		title: { type: String, required: true },
 		price: { type: Number, required: true },
 	},
 	{ timestamps: true }

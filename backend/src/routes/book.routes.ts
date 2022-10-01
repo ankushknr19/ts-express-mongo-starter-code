@@ -11,6 +11,6 @@ const router = express.Router()
 
 router.route('/').get(getAllBooks).post(createBook)
 
-router.route('/:id').get(getBook).put(updateBook).delete(deleteBook)
+router.route('/:id').get(getBook).patch(updateBook).delete(deleteBook)
 
 export default router

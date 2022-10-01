@@ -11,27 +11,26 @@ POST http://localhost:5800/api/books
 Content-Type: application/json
 
 {
-    "bookId": 1,
-    "title": "Book One",
-    "price": "100"
+    "bookId": 4,
+    "title": "Book Four",
+    "price": "1200"
 }
-
-
-### get a book
-GET http://localhost:5800/api/books/1
 
 
 ### get all books
 GET http://localhost:5800/api/books
 
 
+### get a book
+GET http://localhost:5800/api/books/2
+
+
 ### update a book
- PUT http://localhost:5800/api/books/1
+ PATCH http://localhost:5800/api/books/2
  Content-Type: application/json
 
 {
-    "title": "Book One",
-    "price": "300"
+    "price": 12000
 }
 
 
