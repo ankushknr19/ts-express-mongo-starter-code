@@ -8,7 +8,7 @@
 -  Logger
 -  .env setup
 -  Mongoose model example
--  JOI validation schema example
+-  JOI validation example
 -  CRUD operations example
 
 #
@@ -50,7 +50,7 @@ tsc --build
 pnpm run dev
 ```
 
-### Step 5: Perform CRUD operations from [rest.http](./backend/rest.example.http.http) file
+### Step 5: Perform CRUD operations from [rest.example.http](./backend/rest.example.http.http) file
 
 #
 
