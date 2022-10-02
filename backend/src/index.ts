@@ -1,9 +1,9 @@
 import helmet from 'helmet'
 import { PORT } from './config/env'
 import createHttpError from 'http-errors'
-import bookRoutes from './routes/book.routes'
 import { connectDB } from './config/db.connect'
 import logger from './middlewares/winstonLogger'
+import exampleRoutes from './routes/example.routes'
 import morganLogger from './middlewares/morganLogger'
 import { errorHandler } from './middlewares/errorHandler'
 import express, { NextFunction, Request, Response } from 'express'
@@ -17,7 +17,7 @@ app.use(morganLogger)
 
 connectDB()
 
-app.use('/api/books', bookRoutes)
+app.use('/api/books', exampleRoutes)
 
 app.get('/', (_req: Request, res: Response) =>
 	res.status(200).send('server is running...')

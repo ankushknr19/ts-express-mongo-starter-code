@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from 'express'
 import createHttpError from 'http-errors'
-import { BookModel } from '../models/book.model'
-import { createBookSchema, updateBookSchema } from '../schemas/book.schema'
+import { BookModel } from '../models/example.model'
+import { NextFunction, Request, Response } from 'express'
+import { createBookSchema, updateBookSchema } from '../schemas/example.schema'
 
 //@desc get all books
 //@route GET /api/books
@@ -16,7 +16,7 @@ export const getAllBooks = async (
 
 		//find() sends empty array i.e.[] if no data found
 		if (dbBooks.length === 0)
-			throw new createHttpError.NotFound('No books found.')
+			throw new createHttpError.NotFound('Books not found.')
 
 		res.status(200).send(dbBooks)
 	} catch (error: any) {
@@ -37,7 +37,7 @@ export const getBook = async (
 		const bookId = req.params.id
 		const dbBook = await BookModel.findOne({ bookId })
 
-		if (!dbBook) throw new createHttpError.NotFound('No book found.')
+		if (!dbBook) throw new createHttpError.NotFound('Book not found.')
 
 		res.status(200).send(dbBook)
 	} catch (error: any) {
@@ -65,7 +65,7 @@ export const createBook = async (
 		const checkDB = await BookModel.findOne({ bookId })
 		if (checkDB)
 			throw new createHttpError.Conflict(
-				`book with id=${bookId} already exists`
+				`book with id=${bookId} already exists.`
 			)
 
 		//save in database
@@ -99,7 +99,7 @@ export const updateBook = async (
 
 		const dbBook = await BookModel.findOne({ bookId })
 
-		if (!dbBook) throw new createHttpError.NotFound('No book found')
+		if (!dbBook) throw new createHttpError.NotFound('Book not found.')
 
 		const updatedBook = await BookModel.findOneAndUpdate(
 			{ _id: dbBook._id },
@@ -131,7 +131,7 @@ export const deleteBook = async (
 		const bookId = req.params.id
 		const dbBook = await BookModel.findOne({ bookId })
 
-		if (!dbBook) throw new createHttpError.NotFound('No book found')
+		if (!dbBook) throw new createHttpError.NotFound('Book not found')
 
 		await BookModel.deleteOne({ _id: dbBook._id })
 

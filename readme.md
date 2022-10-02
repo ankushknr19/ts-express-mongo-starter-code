@@ -50,7 +50,7 @@ tsc --build
 pnpm run dev
 ```
 
-### Step 5: Perform CRUD operations from [rest.http](./backend/rest.http) file
+### Step 5: Perform CRUD operations from [rest.http](./backend/rest.example.http.http) file
 
 #
 
