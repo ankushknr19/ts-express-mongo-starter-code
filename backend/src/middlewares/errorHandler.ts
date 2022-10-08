@@ -8,12 +8,14 @@ export const errorHandler = (
 	res: Response,
 	_next: NextFunction
 ) => {
-	logger.error(err)
-	res.status(err.status || 500)
-	res.send({
+	logger.error(err.message)
+	const status: number = err.status || 500
+	const message: string =
+		status === 500 ? 'Internal server error.' : err.message
+	res.status(status).send({
 		error: {
-			status: err.status || 500,
-			message: err.message,
+			status,
+			message,
 		},
 	})
 	// next()

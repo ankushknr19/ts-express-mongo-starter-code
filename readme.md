@@ -30,7 +30,7 @@ Install dependencies in the backend folder
 ```sh
 cd express-server-starter-code
 cd backend
-pnpm install
+npm install
 ```
 
 ### Step 2: Build dist folder
@@ -47,7 +47,7 @@ tsc --build
 ### Step 4: Run the server
 
 ```sh
-pnpm run dev
+npm run dev
 ```
 
 ### Step 5: Perform CRUD operations from [rest.example.http](./backend/rest.example.http.http) file
