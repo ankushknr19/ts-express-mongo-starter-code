@@ -20,7 +20,7 @@
 Clone the repo locally using:
 
 ```sh
-git clone git@github.com:ankushknr19/express-server-starter-code.git
+git clone git@github.com:ankushknr19/express-server-starter-code.git your-app-name
 ```
 
 ### Step 2: Install Dependencies

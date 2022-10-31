@@ -18,8 +18,7 @@ export const errorHandler = (
 			message,
 		},
 	})
-	// next()
-	//no need to call next since it is the last point
-	// but it will create error so
-	// need to close the app on sigterm (in index.js)
+	next()
+	//make sure this middleware is the last endpoint in the app
+	//i.e. donot call any other middlewares after this one.
 }
