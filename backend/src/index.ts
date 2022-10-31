@@ -15,8 +15,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morganLogger)
 
-connectDB()
-
 app.use('/api/books', exampleRoutes)
 
 app.get('/', (_req: Request, res: Response) =>
@@ -30,9 +28,10 @@ app.use((_req: Request, _res: Response, next: NextFunction) => {
 
 app.use(errorHandler)
 
-const server = app.listen(PORT, () =>
+const server = app.listen(PORT, async () => {
 	logger.info(`server running on http://localhost:${PORT}`)
-)
+	await connectDB()
+})
 
 process.on('SIGTERM', () => {
 	server.close(() => logger.warn('process terminated'))
