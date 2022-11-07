@@ -1,23 +1,25 @@
 {
 	"name": "express-server-starter-code",
 	"version": "1.0.0",
-	"description": "typescript-express-mongoose starter code with CRUD examples, error handler and logger.",
+	"description": "",
 	"main": "index.js",
 	"scripts": {
 		"watch": "tsc -w",
 		"start": "nodemon dist/index.js",
-		"dev": "concurrently --kill-others \"npm watch\"  \"npm start\""
+		"dev": "concurrently --kill-others \"npm run watch\"  \"npm start\""
 	},
 	"keywords": [],
 	"author": "Ankush Kunwar <ank.knr@gmail.com>",
 	"license": "ISC",
 	"dependencies": {
 		"express": "^4.18.1",
+		"express-rate-limit": "^6.6.0",
 		"helmet": "^6.0.0",
 		"http-errors": "^2.0.0",
 		"joi": "^17.6.2",
 		"mongoose": "^6.6.2",
 		"morgan": "^1.10.0",
+		"swagger-ui-express": "^4.5.0",
 		"winston": "^3.8.2"
 	},
 	"devDependencies": {
@@ -25,6 +27,7 @@
 		"@types/http-errors": "^1.8.2",
 		"@types/morgan": "^1.9.3",
 		"@types/node": "^18.7.23",
+		"@types/swagger-ui-express": "^4.1.3",
 		"concurrently": "^7.4.0",
 		"dotenv": "^16.0.2",
 		"nodemon": "^2.0.20",

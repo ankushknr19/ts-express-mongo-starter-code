@@ -50,7 +50,9 @@ tsc --build
 npm run dev
 ```
 
-### Step 5: Perform CRUD operations from [rest.example.http](./backend/rest.example.http.http) file
+### See API Docs at <a> http://localhost:5800/api-docs </a> ( use your port )
+
+### (or) Perform CRUD operations from [rest.example.http](./backend/rest.example.http.http) file
 
 #
 

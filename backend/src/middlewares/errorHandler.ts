@@ -2,11 +2,12 @@ import { NextFunction, Request, Response } from 'express'
 import logger from './winstonLogger'
 
 //executed when any middeware executes next(error)
+//make sure this is the endpoint i.e. last middleware in app
 export const errorHandler = (
 	err: any,
 	_req: Request,
 	res: Response,
-	_next: NextFunction
+	next: NextFunction
 ) => {
 	logger.error(err.message)
 	const status: number = err.status || 500
@@ -18,8 +19,5 @@ export const errorHandler = (
 			message,
 		},
 	})
-	// next()
-	//no need to call next since it is the last point
-	// but it will create error so
-	// need to close the app on sigterm (in index.js)
+	next()
 }
