@@ -19,8 +19,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morganLogger)
 
-connectDB()
-
 //api docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
@@ -40,9 +38,10 @@ app.use((_req: Request, _res: Response, next: NextFunction) => {
 //donot use any middlewares after this errorHandler
 app.use(errorHandler)
 
-const server = app.listen(PORT, () =>
+const server = app.listen(PORT, async () => {
 	logger.info(`server running on http://localhost:${PORT}`)
-)
+	await connectDB()
+})
 
 process.on('SIGTERM', () => {
 	server.close(() => logger.warn('process terminated'))

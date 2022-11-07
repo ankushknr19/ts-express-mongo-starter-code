@@ -9,7 +9,6 @@
 		"dev": "concurrently --kill-others \"npm run watch\"  \"npm start\""
 	},
 	"keywords": [],
-	"author": "Ankush Kunwar <ank.knr@gmail.com>",
 	"license": "ISC",
 	"dependencies": {
 		"express": "^4.18.1",
