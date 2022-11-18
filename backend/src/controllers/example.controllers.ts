@@ -75,10 +75,7 @@ export const createBook = async (
 			price,
 		})
 
-		res.status(201).send({
-			message: 'new book created successfully.',
-			'new book': newBook,
-		})
+		res.status(201).send(newBook)
 	} catch (error: any) {
 		if (error.isJoi) error.status = 422
 		next(error)
@@ -109,10 +106,7 @@ export const updateBook = async (
 			}
 		)
 
-		res.status(200).send({
-			message: 'book updated successfully.',
-			'updated book': updatedBook,
-		})
+		res.status(200).send(updatedBook)
 	} catch (error: any) {
 		if (error.isJoi) error.status = 422
 		next(error)

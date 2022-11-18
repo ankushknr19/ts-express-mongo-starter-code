@@ -1,12 +1,13 @@
-<h1 align="center"> Express Server Starter Code </h1>
+<h1 align="center"> TS-Express-Mongo Starter Code </h1>
 
 ## Features:
 
 -  TypeScript
 -  MongoDB setup
--  Error Handler
+-  Exception Handler
 -  Logger
--  .env setup
+-  HTTP testing example
+-  Swagger Docs example
 -  Mongoose model example
 -  JOI validation example
 -  CRUD operations example
@@ -28,7 +29,7 @@ git clone git@github.com:ankushknr19/express-server-starter-code.git your-app-na
 Install dependencies in the backend folder
 
 ```sh
-cd express-server-starter-code
+cd your-app-name
 cd backend
 npm install
 ```
@@ -44,11 +45,19 @@ tsc --build
 -  rename [.env.example](./backend/.env.example) file to [.env](/)
 -  replace the values with your own valid values
 
-### Step 4: Run the server
+### Step 4: Test the server
+
+```sh
+npm run test
+```
+
+### Step 5: Run the server
 
 ```sh
 npm run dev
 ```
+
+### Step 6:
 
 ### See API Docs at <a> http://localhost:5800/api-docs </a> ( use your port )
 
