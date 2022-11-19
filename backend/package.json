@@ -1,17 +1,28 @@
 {
-	"name": "express-server-starter-code",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"name": "@ancxkush/create-ts-express-mongo-starter-code",
+	"version": "1.0.1",
+	"description": "NodeJS/Express starter code with - TypeScript, MongoDB setup, Exception Handler, Logger, HTTP testing example, Swagger Docs example, Mongoose model example, JOI validation example, CRUD operations example",
+	"bin": "./bin/cli.js",
+	"main": "server.js",
 	"scripts": {
 		"watch": "tsc -w",
 		"test": "NODE_ENV=test || set NODE_ENV=test&& jest",
 		"start": "nodemon dist/server.js",
 		"dev": "concurrently --kill-others \"npm run watch\"  \"npm start\""
 	},
-	"keywords": [],
+	"keywords": [
+		"nodejs",
+		"express",
+		"typescript",
+		"mongodb",
+		"boilerplate",
+		"starter-code",
+		"starter"
+	],
+	"author": "Ankush Kunwar",
 	"license": "ISC",
 	"dependencies": {
+		"cross-spawn": "^7.0.3",
 		"express": "^4.18.1",
 		"express-rate-limit": "^6.6.0",
 		"helmet": "^6.0.0",
@@ -23,6 +34,7 @@
 		"winston": "^3.8.2"
 	},
 	"devDependencies": {
+		"@types/cross-spawn": "^6.0.2",
 		"@types/express": "^4.17.14",
 		"@types/http-errors": "^1.8.2",
 		"@types/jest": "^29.2.2",

@@ -2,8 +2,8 @@
 	"swagger": "2.0",
 	"info": {
 		"version": "1.0.0",
-		"title": "Express Server Starter Code",
-		"description": "typescript-express-mongoose starter code with CRUD examples, validator, error handler and logger.",
+		"title": "TS-Express-Mongo Starter Code",
+		"description": "NodeJS/Express starter code with - TypeScript, MongoDB setup, Exception Handler, Logger, HTTP testing example, Swagger Docs example, Mongoose model example, JOI validation example, CRUD operations example",
 		"contact": {
 			"author": "Ankush Kunwar",
 			"email": "ank.knr@gmail.com"
