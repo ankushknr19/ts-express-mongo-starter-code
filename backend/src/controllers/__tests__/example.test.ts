@@ -3,7 +3,7 @@ import server from '../../server'
 import request from 'supertest'
 import seed from './seed'
 import { BookModel } from '../../models/example.model'
-import { connectDB, disconnectDB } from '../../config/db.connect'
+import { disconnectDB } from '../../config/db.connect'
 
 const testBook = {
 	bookId: 7,
