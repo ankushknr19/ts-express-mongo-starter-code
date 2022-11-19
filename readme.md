@@ -37,7 +37,7 @@ npm install
 ### Step 2: Build dist folder
 
 ```sh
-tsc --build
+npm run build
 ```
 
 ### Step 3: Setup Environment Variables

@@ -1,10 +1,10 @@
 {
-	"name": "@ancxkush/create-ts-express-mongo-starter-code",
+	"name": "ts-express-mongo-starter-code",
 	"version": "1.0.1",
-	"description": "NodeJS/Express starter code with - TypeScript, MongoDB setup, Exception Handler, Logger, HTTP testing example, Swagger Docs example, Mongoose model example, JOI validation example, CRUD operations example",
-	"bin": "./bin/cli.js",
-	"main": "server.js",
+	"description": "",
+	"main": "dist/server.js",
 	"scripts": {
+		"build": "tsc",
 		"watch": "tsc -w",
 		"test": "NODE_ENV=test || set NODE_ENV=test&& jest",
 		"start": "nodemon dist/server.js",
@@ -22,7 +22,6 @@
 	"author": "Ankush Kunwar",
 	"license": "ISC",
 	"dependencies": {
-		"cross-spawn": "^7.0.3",
 		"express": "^4.18.1",
 		"express-rate-limit": "^6.6.0",
 		"helmet": "^6.0.0",
