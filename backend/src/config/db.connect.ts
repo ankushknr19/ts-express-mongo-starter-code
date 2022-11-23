@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import logger from '../middlewares/winstonLogger'
 import { MONGO_URI, NODE_ENV } from '../config/env'
 import { MongoMemoryServer } from 'mongodb-memory-server'
+import server from '../server'
 
 let mongoMemoryServer: MongoMemoryServer
 
@@ -17,7 +18,7 @@ export async function connectDB() {
 		await mongoose.connect(mongoURI)
 	} catch (error) {
 		logger.error('error during inital connection to mongodb database')
-		process.exit(1)
+		server.close(() => logger.warn('shutting down server...'))
 	}
 }
 

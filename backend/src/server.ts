@@ -4,20 +4,20 @@ import logger from './middlewares/winstonLogger'
 import app from './app'
 
 const server = app.listen(PORT, async () => {
-	logger.info(`server running on http://localhost:${PORT}`)
+	logger.info(`server running at http://localhost:${PORT}`)
 
 	await connectDB()
+})
+
+process.on('unhandledRejection', (reason: Error) => {
+	logger.error(reason.message)
+	logger.warn('unhandled rejection!')
+	throw reason
 })
 
 process.on('uncaughtException', (error: Error) => {
 	logger.error(error.message)
 	logger.warn('uncaught exception! shutting down server...')
-	server.close()
-})
-
-process.on('unhandledRejection', (reason: Error) => {
-	logger.error(reason.message)
-	logger.warn('unhandled rejection! shutting down server...')
 	server.close()
 })
 
