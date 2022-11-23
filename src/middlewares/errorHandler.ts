@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express'
 import logger from './winstonLogger'
+import { NextFunction, Request, Response } from 'express'
 
 //executed when any middeware executes next(error)
 //make sure this is the endpoint i.e. last middleware in app

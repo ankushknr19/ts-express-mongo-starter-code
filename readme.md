@@ -18,18 +18,17 @@
 
 ### Step 1: Clone the repository
 
-Clone the repo locally using:
+Clone the repo to backend directory:
 
 ```sh
-git clone git@github.com:ankushknr19/express-server-starter-code.git your-app-name
+git clone https://github.com/ankushknr19/ts-express-mongo-starter-code.git backend
 ```
 
 ### Step 2: Install Dependencies
 
-Install dependencies in the backend folder
+Install dependencies
 
 ```sh
-cd your-app-name
 cd backend
 npm install
 ```

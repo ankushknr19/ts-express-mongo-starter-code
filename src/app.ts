@@ -1,12 +1,12 @@
 import helmet from 'helmet'
 import createHttpError from 'http-errors'
 import swaggerUi from 'swagger-ui-express'
+import rateLimiter from './middlewares/rateLimiter'
 import exampleRoutes from './routes/example.routes'
 import swaggerDocument from './swagger.example.json'
 import morganLogger from './middlewares/morganLogger'
 import { errorHandler } from './middlewares/errorHandler'
 import express, { NextFunction, Request, Response } from 'express'
-import rateLimiter from './middlewares/rateLimiter'
 
 const app = express()
 
@@ -17,12 +17,14 @@ app.use(express.urlencoded({ extended: true }))
 app.use(morganLogger)
 
 app.get('/', (_req: Request, res: Response) =>
-	res.status(200).send(' server is running...')
+	res.send(
+		'<span>Server is running!! Find api docs here - <a href="/api-docs">API DOCS</a></span>'
+	)
 )
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
-app.use('/api/books', exampleRoutes)
+app.use('/example/books', exampleRoutes)
 
 //if route doesnot exit (unknown route)
 app.use('*', (_req: Request, _res: Response, next: NextFunction) => {

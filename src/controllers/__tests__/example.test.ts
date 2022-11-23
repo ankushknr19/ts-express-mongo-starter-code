@@ -1,7 +1,7 @@
-import app from '../../app'
-import server from '../../server'
-import request from 'supertest'
 import seed from './seed'
+import app from '../../app'
+import request from 'supertest'
+import server from '../../server'
 import { BookModel } from '../../models/example.model'
 import { disconnectDB } from '../../config/db.connect'
 
@@ -27,38 +27,38 @@ describe('example book model', () => {
 		})
 	})
 
-	describe('GET /api/books', () => {
+	describe('GET /example/books', () => {
 		it('should return all books', async () => {
-			const res = await request(app).get('/api/books')
+			const res = await request(app).get('/example/books')
 
 			expect(res.statusCode).toBe(200)
 			expect(res.body).not.toBeNull()
 		})
 	})
 
-	describe('GET /api/books/:id', () => {
+	describe('GET /example/books/:id', () => {
 		it('should return a book', async () => {
-			const res = await request(app).get('/api/books/4')
+			const res = await request(app).get('/example/books/4')
 
 			expect(res.statusCode).toBe(200)
 			expect(res.body.title).toBe('mock book four')
 		})
 	})
 
-	describe('POST /api/books', () => {
+	describe('POST /example/books', () => {
 		it('shoud create a new book', async () => {
-			const res = await request(app).post('/api/books').send(testBook)
+			const res = await request(app).post('/example/books').send(testBook)
 
 			expect(res.statusCode).toBe(201)
 			expect(res.body.bookId).toBe(7)
 		})
 	})
 
-	describe('PATCH /api/books', () => {
+	describe('PATCH /example/books', () => {
 		it('shoud update a book', async () => {
-			await request(app).post('/api/books').send(testBook)
+			await request(app).post('/example/books').send(testBook)
 
-			const res = await request(app).patch('/api/books/7').send({
+			const res = await request(app).patch('/example/books/7').send({
 				price: 765,
 			})
 
@@ -67,11 +67,11 @@ describe('example book model', () => {
 		})
 	})
 
-	describe('DELETE /api/books/:id', () => {
+	describe('DELETE /example/books/:id', () => {
 		it('should delete a book', async () => {
-			await request(app).post('/api/books').send(testBook)
+			await request(app).post('/example/books').send(testBook)
 
-			const res = await request(app).delete('/api/books/7')
+			const res = await request(app).delete('/example/books/7')
 
 			expect(res.statusCode).toBe(200)
 		})

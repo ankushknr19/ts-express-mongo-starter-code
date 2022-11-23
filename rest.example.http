@@ -7,26 +7,26 @@ GET http://localhost:5800/unknown
 
 
 ### create new book
-POST http://localhost:5800/api/books
+POST http://localhost:5800/example/books
 Content-Type: application/json
 
 {
-    "bookId": 4,
-    "title": "Book Four",
-    "price": "1200"
+    "bookId": 2,
+    "title": "Book Two",
+    "price": "200"
 }
 
 
 ### get all books
-GET http://localhost:5800/api/books
+GET http://localhost:5800/example/books
 
 
 ### get a book
-GET http://localhost:5800/api/books/2
+GET http://localhost:5800/example/books/2
 
 
 ### update a book
- PATCH http://localhost:5800/api/books/2
+ PATCH http://localhost:5800/example/books/2
  Content-Type: application/json
 
 {
@@ -35,4 +35,4 @@ GET http://localhost:5800/api/books/2
 
 
 ### delete a book
-DELETE http://localhost:5800/api/books/1
+DELETE http://localhost:5800/example/books/1

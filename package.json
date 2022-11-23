@@ -1,6 +1,6 @@
 {
 	"name": "ts-express-mongo-starter-code",
-	"version": "1.0.1",
+	"version": "1.0.0",
 	"description": "",
 	"main": "dist/server.js",
 	"scripts": {
@@ -39,7 +39,7 @@
 		"@types/node": "^18.7.23",
 		"@types/supertest": "^2.0.12",
 		"@types/swagger-ui-express": "^4.1.3",
-		"dotenv": "^16.0.2",
+		"dotenv": "^16.0.3",
 		"mongodb-memory-server": "^8.10.0",
 		"nodemon": "^2.0.20",
 		"supertest": "^6.3.1",

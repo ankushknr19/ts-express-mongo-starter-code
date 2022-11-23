@@ -129,7 +129,7 @@ export const deleteBook = async (
 
 		await BookModel.deleteOne({ _id: dbBook._id })
 
-		res.status(200).send(`book id=${bookId} deleted successfully.`)
+		res.status(200).end()
 	} catch (error: any) {
 		next(error)
 	}

@@ -1,5 +1,5 @@
-import morgan, { StreamOptions } from 'morgan'
 import { NODE_ENV } from '../config/env'
+import morgan, { StreamOptions } from 'morgan'
 
 import logger from './winstonLogger'
 

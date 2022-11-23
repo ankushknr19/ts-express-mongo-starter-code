@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import logger from '../middlewares/winstonLogger'
-import { MONGO_URI, NODE_ENV } from '../config/env'
+import { MONGO_URI, NODE_ENV } from './env'
 import { MongoMemoryServer } from 'mongodb-memory-server'
 import server from '../server'
 
