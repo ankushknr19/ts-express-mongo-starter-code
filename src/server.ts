@@ -1,13 +1,19 @@
-import { PORT } from './config/env'
-import { connectDB } from './config/db.connect'
-import logger from './middlewares/winstonLogger'
 import app from './app'
+import { PORT } from './config/env'
+import logger from './middlewares/winstonLogger'
+import { connectDB, disconnectDB } from './config/db.connect'
 
 const server = app.listen(PORT, async () => {
 	logger.info(`server running at http://localhost:${PORT}`)
 
 	await connectDB()
 })
+
+async function gracefullShutdown() {
+	await disconnectDB()
+	logger.warn('shutting down server...')
+	server.close()
+}
 
 process.on('unhandledRejection', (reason: Error) => {
 	logger.error(reason.message)
@@ -17,13 +23,10 @@ process.on('unhandledRejection', (reason: Error) => {
 
 process.on('uncaughtException', (error: Error) => {
 	logger.error(error.message)
-	logger.warn('uncaught exception! shutting down server...')
-	server.close()
+	gracefullShutdown
 })
 
-process.on('SIGTERM', () => {
-	logger.warn('process terminated')
-	server.close()
-})
+process.on('SIGINT', gracefullShutdown)
+process.on('SIGTERM', gracefullShutdown)
 
 export default server

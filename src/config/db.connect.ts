@@ -17,7 +17,7 @@ export async function connectDB() {
 
 		await mongoose.connect(mongoURI)
 	} catch (error) {
-		logger.error('error during inital connection to mongodb database')
+		logger.error('error during inital connection to mongodb database', error)
 		server.close(() => logger.warn('shutting down server...'))
 	}
 }
@@ -36,14 +36,10 @@ mongoose.connection.on('disconnected', () =>
 
 export async function disconnectDB() {
 	try {
+		logger.warn('Mongodb database disconnected...')
 		await mongoose.connection.close()
 		mongoMemoryServer && mongoMemoryServer.stop()
 	} catch (error) {
 		logger.warn('Error during disconnecting mongodb database')
 	}
 }
-
-process.on('SIGINT', async () => {
-	logger.warn('Mongodb database disconnected...')
-	await mongoose.connection.close()
-})
