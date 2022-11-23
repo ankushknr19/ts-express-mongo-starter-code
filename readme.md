@@ -44,7 +44,7 @@ npm run build
 -  rename [.env.example](./backend/.env.example) file to [.env](/)
 -  replace the values with your own valid values
 
-### Step 4: Test the server
+### Step 4: Perform api testing
 
 ```sh
 npm run test
@@ -58,7 +58,7 @@ npm run dev
 
 ### Step 6:
 
-### See API Docs at <a> http://localhost:5800/api-docs </a> ( use your port )
+### See API Docs at <a> /api-docs </a>
 
 ### (or) Perform CRUD operations from [rest.example.http](./backend/rest.example.http.http) file
 
