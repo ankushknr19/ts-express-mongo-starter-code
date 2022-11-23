@@ -1,7 +1,6 @@
 import seed from './seed'
 import app from '../../app'
 import request from 'supertest'
-import server from '../../server'
 import { BookModel } from '../../models/example.model'
 import { disconnectDB } from '../../config/db.connect'
 
@@ -18,7 +17,7 @@ describe('example book model', () => {
 
 	afterAll(async () => {
 		disconnectDB()
-		server.close()
+		process.exit(1)
 	})
 
 	beforeEach(async () => {
