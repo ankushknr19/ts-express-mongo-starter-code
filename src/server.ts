@@ -3,16 +3,16 @@ import { PORT } from './config/env'
 import logger from './middlewares/winstonLogger'
 import { connectDB, disconnectDB } from './config/db.connect'
 
-const server = app.listen(PORT, async () => {
-	logger.info(`server running at http://localhost:${PORT}`)
-
-	await connectDB()
+connectDB().then(() => {
+	app.listen(PORT, async () => {
+		logger.info(`server running at http://localhost:${PORT}`)
+	})
 })
 
 async function gracefullShutdown() {
 	await disconnectDB()
 	logger.warn('shutting down server...')
-	server.close()
+	process.exit(1)
 }
 
 process.on('unhandledRejection', (reason: Error) => {
@@ -28,5 +28,3 @@ process.on('uncaughtException', (error: Error) => {
 
 process.on('SIGINT', gracefullShutdown)
 process.on('SIGTERM', gracefullShutdown)
-
-export default server

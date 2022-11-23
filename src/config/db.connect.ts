@@ -1,14 +1,13 @@
 import mongoose from 'mongoose'
-import logger from '../middlewares/winstonLogger'
 import { MONGO_URI, NODE_ENV } from './env'
+import logger from '../middlewares/winstonLogger'
 import { MongoMemoryServer } from 'mongodb-memory-server'
-import server from '../server'
 
 let mongoMemoryServer: MongoMemoryServer
 
 export async function connectDB() {
 	try {
-		let mongoURI: string = MONGO_URI || ''
+		let mongoURI: string = MONGO_URI
 
 		if (NODE_ENV == 'test') {
 			mongoMemoryServer = await MongoMemoryServer.create()
@@ -17,8 +16,11 @@ export async function connectDB() {
 
 		await mongoose.connect(mongoURI)
 	} catch (error) {
-		logger.error('error during inital connection to mongodb database', error)
-		server.close(() => logger.warn('shutting down server...'))
+		logger.error(
+			'error during inital connection to mongodb database: ',
+			error
+		)
+		process.exit(1)
 	}
 }
 
