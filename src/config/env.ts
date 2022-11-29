@@ -1,9 +1,3 @@
-import fs from 'fs'
-import dotenv from 'dotenv'
-import logger from '../middlewares/winstonLogger'
-
-fs.existsSync('.env') ? dotenv.config() : logger.error('.env file not found.')
-
 export const NODE_ENV = process.env.NODE_ENV as string
 export const PORT = (process.env.PORT ?? 5800) as number
 
