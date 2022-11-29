@@ -1,7 +1,6 @@
+import logger from './winstonLogger'
 import { NODE_ENV } from '../config/env'
 import morgan, { StreamOptions } from 'morgan'
-
-import logger from './winstonLogger'
 
 const stream: StreamOptions = {
 	// Use the http severity

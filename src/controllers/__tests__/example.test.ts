@@ -2,7 +2,7 @@ import seed from './seed'
 import app from '../../app'
 import request from 'supertest'
 import { BookModel } from '../../models/example.model'
-import { disconnectDB } from '../../config/db.connect'
+import { connectDB, disconnectDB } from '../../config/db.connect'
 
 const testBook = {
 	bookId: 7,
@@ -12,22 +12,21 @@ const testBook = {
 
 describe('example book model', () => {
 	beforeAll(async () => {
-		await BookModel.insertMany(seed)
+		await connectDB()
+	})
+
+	beforeEach(async () => {
+		await BookModel.deleteMany()
 	})
 
 	afterAll(async () => {
 		disconnectDB()
-		process.exit(1)
-	})
-
-	beforeEach(async () => {
-		await BookModel.deleteMany({
-			title: 'test book',
-		})
 	})
 
 	describe('GET /example/books', () => {
 		it('should return all books', async () => {
+			await BookModel.insertMany(seed)
+
 			const res = await request(app).get('/example/books')
 
 			expect(res.statusCode).toBe(200)
@@ -37,6 +36,8 @@ describe('example book model', () => {
 
 	describe('GET /example/books/:id', () => {
 		it('should return a book', async () => {
+			await BookModel.insertMany(seed)
+
 			const res = await request(app).get('/example/books/4')
 
 			expect(res.statusCode).toBe(200)

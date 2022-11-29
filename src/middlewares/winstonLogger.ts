@@ -9,6 +9,7 @@ const levels = {
 	debug: 4,
 }
 
+//log only at this level or higher
 const level = () => {
 	const env = NODE_ENV || 'development'
 	const isDevelopment = env === 'development'
@@ -33,20 +34,14 @@ const format = winston.format.combine(
 	)
 )
 
-const transports = [
-	new winston.transports.Console(),
-	// new winston.transports.File({
-	// 	filename: 'logs/error.log',
-	// 	level: 'error',
-	// }),
-	// new winston.transports.File({ filename: 'logs/all.log' }),
-]
+const transports = [new winston.transports.Console()]
 
 const logger = winston.createLogger({
 	level: level(),
 	levels,
 	format,
 	transports,
+	silent: NODE_ENV === 'production',
 })
 
 export default logger
