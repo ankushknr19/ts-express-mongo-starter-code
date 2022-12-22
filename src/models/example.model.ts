@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-interface BookDocument {
+export interface BookDocument {
 	bookId: number
 	title: string
 	price: number

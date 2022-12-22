@@ -1,4 +1,6 @@
-const seed = [
+import { BookDocument } from '../../models/example.model'
+
+const seed: BookDocument[] = [
 	{
 		bookId: 4,
 		title: 'mock book four',

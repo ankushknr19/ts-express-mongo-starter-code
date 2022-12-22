@@ -2,19 +2,20 @@ import createHttpError from 'http-errors'
 import { BookModel } from '../models/example.model'
 import { NextFunction, Request, Response } from 'express'
 import { createBookSchema, updateBookSchema } from '../schemas/example.schema'
+import * as exampleServices from '../services/example.services'
 
 //@desc get all books
 //@route GET /api/books
 //@access public
-export const getAllBooks = async (
+export const getAllBooksController = async (
 	_req: Request,
 	res: Response,
 	next: NextFunction
 ) => {
 	try {
-		const dbBooks = await BookModel.find()
+		const dbBooks = await exampleServices.getAllBooks()
 
-		//find() sends empty array i.e.[] if no data found
+		//donot use "!dbBooks" as find() query sends empty array i.e.[] if no data found
 		if (dbBooks.length === 0)
 			throw new createHttpError.NotFound('Books not found.')
 
@@ -28,14 +29,14 @@ export const getAllBooks = async (
 //@desc get a book
 //@route GET /api/books/:id
 //@access public
-export const getBook = async (
+export const getBookController = async (
 	req: Request,
 	res: Response,
 	next: NextFunction
 ) => {
 	try {
 		const bookId = req.params.id
-		const dbBook = await BookModel.findOne({ bookId })
+		const dbBook = await exampleServices.getBook({ bookId })
 
 		if (!dbBook) throw new createHttpError.NotFound('Book not found.')
 
@@ -49,17 +50,18 @@ export const getBook = async (
 //@desc create a new book
 //@route POST /api/books
 //@access public
-export const createBook = async (
+
+export const createBookController = async (
 	req: Request,
 	res: Response,
 	next: NextFunction
 ) => {
 	try {
 		//validate incoming data
-		const reqBody = await createBookSchema.validateAsync(req.body)
+		const createInputs = await createBookSchema.validateAsync(req.body)
 
 		//destructure data
-		const { bookId, title, price } = reqBody
+		const { bookId, title, price } = createInputs
 
 		//check if book with given id already exists
 		const checkDB = await BookModel.findOne({ bookId })
@@ -69,7 +71,7 @@ export const createBook = async (
 			)
 
 		//save in database
-		const newBook = await BookModel.create({
+		const newBook = await exampleServices.createBook({
 			bookId,
 			title,
 			price,
@@ -77,7 +79,6 @@ export const createBook = async (
 
 		res.status(201).send(newBook)
 	} catch (error: any) {
-		if (error.isJoi) error.status = 422
 		next(error)
 	}
 }
@@ -85,30 +86,26 @@ export const createBook = async (
 //@desc update a book
 //@route PUT /api/books/id
 //@access public
-export const updateBook = async (
+export const updateBookController = async (
 	req: Request,
 	res: Response,
 	next: NextFunction
 ) => {
 	try {
 		const bookId = req.params.id
-		const reqBody = await updateBookSchema.validateAsync(req.body)
+		const updateInputs = await updateBookSchema.validateAsync(req.body)
 
 		const dbBook = await BookModel.findOne({ bookId })
 
 		if (!dbBook) throw new createHttpError.NotFound('Book not found.')
 
-		const updatedBook = await BookModel.findOneAndUpdate(
+		const updatedBook = await exampleServices.updateBook(
 			{ _id: dbBook._id },
-			reqBody,
-			{
-				new: true,
-			}
+			updateInputs
 		)
 
 		res.status(200).send(updatedBook)
 	} catch (error: any) {
-		if (error.isJoi) error.status = 422
 		next(error)
 	}
 }
@@ -116,7 +113,7 @@ export const updateBook = async (
 //@desc delete a book
 //@route DELETE /api/books/id
 //@access public
-export const deleteBook = async (
+export const deleteBookController = async (
 	req: Request,
 	res: Response,
 	next: NextFunction
@@ -127,7 +124,7 @@ export const deleteBook = async (
 
 		if (!dbBook) throw new createHttpError.NotFound('Book not found')
 
-		await BookModel.deleteOne({ _id: dbBook._id })
+		await exampleServices.deleteBook({ _id: dbBook._id })
 
 		res.status(200).end()
 	} catch (error: any) {

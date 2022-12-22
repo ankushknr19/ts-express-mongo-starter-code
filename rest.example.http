@@ -11,9 +11,9 @@ POST http://localhost:5800/example/books
 Content-Type: application/json
 
 {
-    "bookId": 2,
-    "title": "Book Two",
-    "price": "200"
+    "bookId": 44,
+    "title": "Book Fourty four",
+    "price": "200",
 }
 
 
@@ -22,7 +22,7 @@ GET http://localhost:5800/example/books
 
 
 ### get a book
-GET http://localhost:5800/example/books/2
+GET http://localhost:5800/example/books/4
 
 
 ### update a book
