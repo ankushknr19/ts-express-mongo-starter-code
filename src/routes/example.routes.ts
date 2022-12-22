@@ -1,16 +1,20 @@
 import express from 'express'
 import {
-	getAllBooks,
-	getBook,
-	createBook,
-	deleteBook,
-	updateBook,
+	getAllBooksController,
+	getBookController,
+	createBookController,
+	deleteBookController,
+	updateBookController,
 } from '../controllers/example.controllers'
 
 const router = express.Router()
 
-router.route('/').get(getAllBooks).post(createBook)
+router.route('/').get(getAllBooksController).post(createBookController)
 
-router.route('/:id').get(getBook).patch(updateBook).delete(deleteBook)
+router
+	.route('/:id')
+	.get(getBookController)
+	.patch(updateBookController)
+	.delete(deleteBookController)
 
 export default router

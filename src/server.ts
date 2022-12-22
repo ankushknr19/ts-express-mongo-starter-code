@@ -1,7 +1,7 @@
 import app from './app'
 import { PORT } from './config/env'
 import logger from './middlewares/winstonLogger'
-import { connectDB, disconnectDB } from './config/db.connect'
+import { connectDB, disconnectDB } from './config/database'
 
 connectDB().then(() => {
 	app.listen(PORT, async () => {

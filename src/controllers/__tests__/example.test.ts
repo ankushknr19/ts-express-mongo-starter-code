@@ -2,13 +2,7 @@ import seed from './seed'
 import app from '../../app'
 import request from 'supertest'
 import { BookModel } from '../../models/example.model'
-import { connectDB, disconnectDB } from '../../config/db.connect'
-
-const testBook = {
-	bookId: 7,
-	title: 'test book',
-	price: 777,
-}
+import { connectDB, disconnectDB } from '../../config/database'
 
 describe('example book model', () => {
 	beforeAll(async () => {
@@ -41,37 +35,37 @@ describe('example book model', () => {
 			const res = await request(app).get('/example/books/4')
 
 			expect(res.statusCode).toBe(200)
-			expect(res.body.title).toBe('mock book four')
+			expect(res.body.bookId).toBe(4)
 		})
 	})
 
 	describe('POST /example/books', () => {
 		it('shoud create a new book', async () => {
-			const res = await request(app).post('/example/books').send(testBook)
+			const res = await request(app).post('/example/books').send(seed[0])
 
 			expect(res.statusCode).toBe(201)
-			expect(res.body.bookId).toBe(7)
+			expect(res.body.bookId).toBe(4)
 		})
 	})
 
 	describe('PATCH /example/books', () => {
 		it('shoud update a book', async () => {
-			await request(app).post('/example/books').send(testBook)
+			await request(app).post('/example/books').send(seed[0])
 
-			const res = await request(app).patch('/example/books/7').send({
-				price: 765,
+			const res = await request(app).patch('/example/books/4').send({
+				price: 465,
 			})
 
 			expect(res.statusCode).toBe(200)
-			expect(res.body.price).toBe(765)
+			expect(res.body.price).toBe(465)
 		})
 	})
 
 	describe('DELETE /example/books/:id', () => {
 		it('should delete a book', async () => {
-			await request(app).post('/example/books').send(testBook)
+			await request(app).post('/example/books').send(seed[0])
 
-			const res = await request(app).delete('/example/books/7')
+			const res = await request(app).delete('/example/books/4')
 
 			expect(res.statusCode).toBe(200)
 		})

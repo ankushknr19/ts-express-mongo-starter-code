@@ -1,5 +1,5 @@
 {
-	"name": "ts-express-mongo-starter-code",
+	"name": "app",
 	"version": "1.0.0",
 	"description": "",
 	"main": "dist/server.js",
@@ -9,17 +9,7 @@
 		"start": "node dist/server.js",
 		"dev": "ts-node-dev --respawn --transpile-only src/server.ts"
 	},
-	"keywords": [
-		"nodejs",
-		"express",
-		"typescript",
-		"mongodb",
-		"boilerplate",
-		"starter-code",
-		"starter"
-	],
-	"author": "Ankush Kunwar",
-	"license": "ISC",
+	"license": "MIT",
 	"dependencies": {
 		"dotenv": "^16.0.3",
 		"express": "^4.18.1",
@@ -46,8 +36,5 @@
 		"ts-jest": "^29.0.3",
 		"ts-node-dev": "^2.0.0",
 		"typescript": "^4.8.4"
-	},
-	"volta": {
-		"node": "18.12.1"
 	}
 }
