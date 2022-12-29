@@ -1,12 +1,16 @@
-import joi from 'joi'
+import { z } from 'zod'
 
-export const createBookSchema = joi.object({
-	bookId: joi.number().required(),
-	title: joi.string().trim().required(),
-	price: joi.number().max(10000).required(),
+export const createBookSchema = z.object({
+	body: z.object({
+		bookId: z.number(),
+		title: z.string().trim(),
+		price: z.number().max(10000),
+	}),
 })
 
-export const updateBookSchema = joi.object({
-	title: joi.string().lowercase().trim(),
-	price: joi.number().max(10000),
+export const updateBookSchema = z.object({
+	body: z.object({
+		title: z.string().trim().optional(),
+		price: z.number().max(10000).optional(),
+	}),
 })

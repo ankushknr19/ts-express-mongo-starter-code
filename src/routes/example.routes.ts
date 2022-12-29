@@ -6,15 +6,22 @@ import {
 	deleteBookController,
 	updateBookController,
 } from '../controllers/example.controllers'
+import validate from '../middlewares/zodValidator'
+import { createBookSchema, updateBookSchema } from '../schemas/example.schema'
 
 const router = express.Router()
 
-router.route('/').get(getAllBooksController).post(createBookController)
-
+/* example/books */
 router
-	.route('/:id')
+	.route('/')
+	.get(getAllBooksController)
+	.post(validate(createBookSchema), createBookController)
+
+/* example/books/:bookId */
+router
+	.route('/:bookId')
 	.get(getBookController)
-	.patch(updateBookController)
+	.patch(validate(updateBookSchema), updateBookController)
 	.delete(deleteBookController)
 
 export default router

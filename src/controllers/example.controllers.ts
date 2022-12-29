@@ -1,7 +1,6 @@
 import createHttpError from 'http-errors'
 import { BookModel } from '../models/example.model'
 import { NextFunction, Request, Response } from 'express'
-import { createBookSchema, updateBookSchema } from '../schemas/example.schema'
 import * as exampleServices from '../services/example.services'
 
 //@desc get all books
@@ -27,7 +26,7 @@ export const getAllBooksController = async (
 }
 
 //@desc get a book
-//@route GET /api/books/:id
+//@route GET /api/books/:bookId
 //@access public
 export const getBookController = async (
 	req: Request,
@@ -35,7 +34,7 @@ export const getBookController = async (
 	next: NextFunction
 ) => {
 	try {
-		const bookId = req.params.id
+		const bookId = req.params.bookId
 		const dbBook = await exampleServices.getBook({ bookId })
 
 		if (!dbBook) throw new createHttpError.NotFound('Book not found.')
@@ -57,11 +56,8 @@ export const createBookController = async (
 	next: NextFunction
 ) => {
 	try {
-		//validate incoming data
-		const createInputs = await createBookSchema.validateAsync(req.body)
-
-		//destructure data
-		const { bookId, title, price } = createInputs
+		//destructure incoming data
+		const { bookId, title, price } = req.body
 
 		//check if book with given id already exists
 		const checkDB = await BookModel.findOne({ bookId })
@@ -84,7 +80,7 @@ export const createBookController = async (
 }
 
 //@desc update a book
-//@route PUT /api/books/id
+//@route PUT /api/books/:bookId
 //@access public
 export const updateBookController = async (
 	req: Request,
@@ -92,8 +88,8 @@ export const updateBookController = async (
 	next: NextFunction
 ) => {
 	try {
-		const bookId = req.params.id
-		const updateInputs = await updateBookSchema.validateAsync(req.body)
+		const bookId = req.params.bookId
+		const updateInputs = req.body
 
 		const dbBook = await BookModel.findOne({ bookId })
 
@@ -111,7 +107,7 @@ export const updateBookController = async (
 }
 
 //@desc delete a book
-//@route DELETE /api/books/id
+//@route DELETE /api/books/:bookId
 //@access public
 export const deleteBookController = async (
 	req: Request,
@@ -119,7 +115,7 @@ export const deleteBookController = async (
 	next: NextFunction
 ) => {
 	try {
-		const bookId = req.params.id
+		const bookId = req.params.bookId
 		const dbBook = await BookModel.findOne({ bookId })
 
 		if (!dbBook) throw new createHttpError.NotFound('Book not found')

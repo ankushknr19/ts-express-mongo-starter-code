@@ -6,14 +6,14 @@ GET http://localhost:5800
 GET http://localhost:5800/unknown
 
 
-### create new book
-POST http://localhost:5800/example/books
-Content-Type: application/json
+### create a book
+ POST http://localhost:5800/example/books
+ Content-Type: application/json
 
 {
-    "bookId": 44,
+    "bookId": "44",
     "title": "Book Fourty four",
-    "price": "200",
+    "price": 12000
 }
 
 

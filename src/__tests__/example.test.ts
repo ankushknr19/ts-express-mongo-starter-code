@@ -1,12 +1,15 @@
+import app from '../app'
 import seed from './seed'
-import app from '../../app'
 import request from 'supertest'
-import { BookModel } from '../../models/example.model'
-import { connectDB, disconnectDB } from '../../config/database'
+import { BookModel } from '../models/example.model'
+import {
+	connectMonogoMemoryServer,
+	disconnectMonogoMemoryServer,
+} from './config/mongoMemoryServer'
 
 describe('example book model', () => {
 	beforeAll(async () => {
-		await connectDB()
+		await connectMonogoMemoryServer()
 	})
 
 	beforeEach(async () => {
@@ -14,7 +17,7 @@ describe('example book model', () => {
 	})
 
 	afterAll(async () => {
-		disconnectDB()
+		await disconnectMonogoMemoryServer()
 	})
 
 	describe('GET /example/books', () => {
@@ -28,7 +31,7 @@ describe('example book model', () => {
 		})
 	})
 
-	describe('GET /example/books/:id', () => {
+	describe('GET /example/books/:bookId', () => {
 		it('should return a book', async () => {
 			await BookModel.insertMany(seed)
 
@@ -48,7 +51,7 @@ describe('example book model', () => {
 		})
 	})
 
-	describe('PATCH /example/books', () => {
+	describe('PATCH /example/books/:bookId', () => {
 		it('shoud update a book', async () => {
 			await request(app).post('/example/books').send(seed[0])
 
@@ -61,7 +64,7 @@ describe('example book model', () => {
 		})
 	})
 
-	describe('DELETE /example/books/:id', () => {
+	describe('DELETE /example/books/:bookId', () => {
 		it('should delete a book', async () => {
 			await request(app).post('/example/books').send(seed[0])
 
