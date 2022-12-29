@@ -97,7 +97,7 @@ npm run dev
 -  instead of doing console.log(), do:
 
    ```sh
-   import logger from './middlewares/winstonLogger'
+   import logger from './utils/winstonLogger'
 
    logger.error('error message')
    logger.warn('warning message')
