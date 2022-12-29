@@ -10,9 +10,12 @@ export const errorHandler = (
 	next: NextFunction
 ) => {
 	logger.error(error.message)
-	const status: number = error.isJoi ? 422 : error.status || 500
+
+	const status: number = error.status || 500
+
 	const message: string =
 		status === 500 ? 'Internal server error.' : error.message
+
 	res.status(status).send({
 		error: {
 			status,

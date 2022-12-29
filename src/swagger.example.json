@@ -16,7 +16,7 @@
 		"/example/books": {
 			"get": {
 				"description": "Returns all books",
-				"operationId": "findBooks",
+				"operationId": "getAllBooks",
 				"produces": ["application/json"],
 				"responses": {
 					"200": {
@@ -38,7 +38,7 @@
 			},
 			"post": {
 				"description": "Creates a new book",
-				"operationId": "addBook",
+				"operationId": "createBook",
 				"produces": ["application/json"],
 				"parameters": [
 					{
@@ -70,13 +70,8 @@
 		"/example/books/{bookId}": {
 			"get": {
 				"description": "Returns a user based on a single ID, if the user does not have access to the Book",
-				"operationId": "findBookById",
-				"produces": [
-					"application/json",
-					"application/xml",
-					"text/xml",
-					"text/html"
-				],
+				"operationId": "getOneBook",
+				"produces": ["application/json"],
 				"parameters": [
 					{
 						"name": "bookId",
@@ -104,7 +99,7 @@
 			},
 			"delete": {
 				"description": "deletes a single book based on the bookId supplied",
-				"operationId": "deleteBook",
+				"operationId": "deleteOneBook",
 				"parameters": [
 					{
 						"name": "bookId",
@@ -148,18 +143,21 @@
 		},
 		"NewBook": {
 			"type": "object",
-			"required": ["bookId", "name", "price"],
+			"required": ["bookId", "title", "price"],
 			"properties": {
 				"bookId": {
 					"type": "integer",
-					"format": "int32"
+					"format": "int32",
+					"example": 12
 				},
 				"title": {
-					"type": "string"
+					"type": "string",
+					"example": "Book Twelve"
 				},
 				"price": {
 					"type": "integer",
-					"format": "int32"
+					"format": "int32",
+					"example": 1200
 				}
 			}
 		},
