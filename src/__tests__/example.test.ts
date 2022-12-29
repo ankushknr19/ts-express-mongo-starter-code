@@ -1,8 +1,8 @@
 import seed from './seed'
-import app from '../../app'
+import app from '../app'
 import request from 'supertest'
-import { BookModel } from '../../models/example.model'
-import { connectDB, disconnectDB } from '../../config/database'
+import { BookModel } from '../models/example.model'
+import { connectDB, disconnectDB } from '../config/database'
 
 describe('example book model', () => {
 	beforeAll(async () => {
