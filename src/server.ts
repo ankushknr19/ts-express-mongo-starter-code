@@ -1,6 +1,6 @@
 import app from './app'
 import { PORT } from './config/env'
-import logger from './middlewares/winstonLogger'
+import logger from './utils/winstonLogger'
 import { connectDB, disconnectDB } from './config/database'
 
 connectDB().then(() => {

@@ -4,12 +4,12 @@
 
 -  TypeScript
 -  MongoDB setup
--  Exception Handler
--  Logger
--  HTTP testing example
+-  Error & Exception Handler
+-  Morgan & Winston Logger
+-  API testing example
 -  Swagger Docs example
 -  Mongoose model example
--  JOI validation example
+-  ZOD validation example
 -  CRUD operations example
 
 #
@@ -60,7 +60,7 @@ npm run dev
 
 ### See API Docs at <a> /api-docs </a>
 
-### (or) Perform CRUD operations from [rest.example.http](./backend/rest.example.http.http) file
+### (or) Perform CRUD operations from [rest.example.http](./rest.example.http) file
 
 #
 
@@ -91,13 +91,12 @@ npm run dev
 
 ### 3. Morgan and Winston logger :
 
--  saves all logs
 -  5 levels: error, warn, info, http & debug
 -  morgan creates http logs
 -  instead of doing console.log(), do:
 
    ```sh
-   import logger from './middlewares/winstonLogger'
+   import logger from './utils/winstonLogger'
 
    logger.error('error message')
    logger.warn('warning message')
@@ -106,6 +105,6 @@ npm run dev
 ### 4. env variables :
 
 -  first create a variable in .env file
--  then import and declare it in [config/env.ts](./backend/src/config/env.ts) file
+-  then import and declare it in [config/env.ts](./src/config/env.ts) file
 
 #
