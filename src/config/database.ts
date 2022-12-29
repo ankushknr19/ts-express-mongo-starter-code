@@ -1,20 +1,10 @@
 import mongoose from 'mongoose'
-import { MONGO_URI, NODE_ENV } from './env'
+import { MONGO_URI } from './env'
 import logger from '../middlewares/winstonLogger'
-import { MongoMemoryServer } from 'mongodb-memory-server'
-
-let mongoMemoryServer: MongoMemoryServer
 
 export async function connectDB() {
 	try {
-		let mongoURI: string = MONGO_URI
-
-		if (NODE_ENV == 'test') {
-			mongoMemoryServer = await MongoMemoryServer.create()
-			mongoURI = mongoMemoryServer.getUri()
-		}
-
-		await mongoose.connect(mongoURI)
+		await mongoose.connect(MONGO_URI)
 	} catch (error) {
 		logger.error(
 			'error during inital connection to mongodb database: ',
@@ -25,9 +15,7 @@ export async function connectDB() {
 }
 
 mongoose.connection.on('connected', () =>
-	mongoMemoryServer
-		? logger.info('using mongo memory server for test environment...')
-		: logger.info('Mongodb database connected...')
+	logger.info('Mongodb database connected...')
 )
 
 mongoose.connection.on('error', (err) => logger.error(err.message))
@@ -40,7 +28,6 @@ export async function disconnectDB() {
 	try {
 		logger.warn('Mongodb database disconnected...')
 		await mongoose.connection.close()
-		mongoMemoryServer && mongoMemoryServer.stop()
 	} catch (error) {
 		logger.warn('Error during disconnecting mongodb database')
 	}

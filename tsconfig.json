@@ -25,6 +25,6 @@
 		"alwaysStrict": true,
 		"skipLibCheck": true
 	},
-	"exclude": ["node_modules"],
+	"exclude": ["node_modules", "./src/**/__tests__"],
 	"include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }
