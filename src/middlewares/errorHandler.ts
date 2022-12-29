@@ -1,4 +1,4 @@
-import logger from './winstonLogger'
+import logger from '../utils/winstonLogger'
 import { NextFunction, Request, Response } from 'express'
 
 //executed when any middeware executes next(error)

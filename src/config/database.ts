@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import { MONGO_URI } from './env'
-import logger from '../middlewares/winstonLogger'
+import logger from '../utils/winstonLogger'
 
 export async function connectDB() {
 	try {

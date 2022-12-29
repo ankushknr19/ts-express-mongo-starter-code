@@ -1,10 +1,10 @@
 import helmet from 'helmet'
 import createHttpError from 'http-errors'
 import swaggerUi from 'swagger-ui-express'
+import morganLogger from './utils/morganLogger'
 import rateLimiter from './middlewares/rateLimiter'
 import exampleRoutes from './routes/example.routes'
 import swaggerDocument from './swagger.example.json'
-import morganLogger from './middlewares/morganLogger'
 import { errorHandler } from './middlewares/errorHandler'
 import express, { NextFunction, Request, Response } from 'express'
 
