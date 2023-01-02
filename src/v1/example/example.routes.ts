@@ -1,23 +1,23 @@
 import express from 'express'
 import {
-	getAllBooksController,
 	getBookController,
+	getAllBooksController,
 	createBookController,
 	deleteBookController,
 	updateBookController,
-} from '../controllers/example.controllers'
-import validate from '../middlewares/zodValidator'
-import { createBookSchema, updateBookSchema } from '../schemas/example.schema'
+} from './controllers/index'
+import { validate } from '../../middlewares/zodValidator'
+import { createBookSchema, updateBookSchema } from './example.schema'
 
 const router = express.Router()
 
-/* example/books */
+/* /api/v1/example/books */
 router
 	.route('/')
 	.get(getAllBooksController)
 	.post(validate(createBookSchema), createBookController)
 
-/* example/books/:bookId */
+/* /api/v1/example/books/:bookId */
 router
 	.route('/:bookId')
 	.get(getBookController)

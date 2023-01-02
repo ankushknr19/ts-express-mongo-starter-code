@@ -1,4 +1,4 @@
-import { BookDocument } from '../models/example.model'
+import { BookDocument } from '../example.model'
 
 const seed: BookDocument[] = [
 	{

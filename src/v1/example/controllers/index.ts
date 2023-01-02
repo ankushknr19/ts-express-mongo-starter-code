@@ -1,0 +1,5 @@
+export { getBookController } from './getBook.controller'
+export { createBookController } from './createBook.controller'
+export { deleteBookController } from './deleteBook.controller'
+export { updateBookController } from './updateBook.controller'
+export { getAllBooksController } from './getAllBooks.controller'

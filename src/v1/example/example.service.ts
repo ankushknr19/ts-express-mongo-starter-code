@@ -1,4 +1,4 @@
-import { BookDocument, BookModel } from '../models/example.model'
+import { BookDocument, BookModel } from './example.model'
 import {
 	DocumentDefinition,
 	FilterQuery,

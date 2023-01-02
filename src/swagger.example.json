@@ -13,7 +13,7 @@
 	"consumes": ["application/json"],
 	"produces": ["application/json"],
 	"paths": {
-		"/example/books": {
+		"/api/v1/example/books": {
 			"get": {
 				"description": "Returns all books",
 				"operationId": "getAllBooks",
@@ -67,7 +67,7 @@
 				}
 			}
 		},
-		"/example/books/{bookId}": {
+		"/api/v1/example/books/{bookId}": {
 			"get": {
 				"description": "Returns a user based on a single ID, if the user does not have access to the Book",
 				"operationId": "getOneBook",

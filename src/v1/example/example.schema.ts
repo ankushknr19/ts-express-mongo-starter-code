@@ -1,5 +1,7 @@
 import { z } from 'zod'
 
+//schemas for validating incoming data
+
 export const createBookSchema = z.object({
 	body: z.object({
 		bookId: z.number(),

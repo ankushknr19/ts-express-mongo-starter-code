@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import logger from '../../utils/winstonLogger'
+import logger from '../utils/winstonLogger'
 import { MongoMemoryServer } from 'mongodb-memory-server'
 
 let mongoMemoryServer: MongoMemoryServer

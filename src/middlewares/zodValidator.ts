@@ -3,7 +3,7 @@ import createHttpError from 'http-errors'
 import { fromZodError } from 'zod-validation-error'
 import { NextFunction, Request, Response } from 'express'
 
-const validate =
+export const validate =
 	(schema: AnyZodObject) =>
 	(req: Request, _res: Response, next: NextFunction) => {
 		try {
@@ -22,5 +22,3 @@ const validate =
 			next(new createHttpError.UnprocessableEntity(readableZodErrorMessage))
 		}
 	}
-
-export default validate
