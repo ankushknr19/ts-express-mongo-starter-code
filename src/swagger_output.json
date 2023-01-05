@@ -9,19 +9,11 @@
 			"email": "ank.knr@gmail.com"
 		}
 	},
-	"host": "localhost:3000",
 	"servers": [
 		{
-			"url": "http://localhost:{port}/api/v1",
-			"description": "Development Server",
-			"variables": {
-				"port": {
-					"default": 5800
-				}
-			}
+			"url": "/api/v1"
 		}
 	],
-	"basePath": "/",
 	"schemes": ["http"],
 	"paths": {
 		"/example/books/": {

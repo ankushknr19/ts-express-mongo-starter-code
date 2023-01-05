@@ -17,13 +17,7 @@ const doc = {
 	},
 	servers: [
 		{
-			url: 'http://localhost:{port}/api/v1',
-			description: 'Development Server',
-			variables: {
-				port: {
-					default: 5800,
-				},
-			},
+			url: '/api/v1',
 		},
 	],
 	...exampleComponents,
