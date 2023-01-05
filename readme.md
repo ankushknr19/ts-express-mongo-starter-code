@@ -2,15 +2,16 @@
 
 ## Features:
 
+-  Production Ready
 -  TypeScript
 -  MongoDB setup
 -  Error & Exception Handler
 -  Morgan & Winston Logger
--  API testing example
--  Swagger Docs example
--  Mongoose model example
--  ZOD validation example
--  CRUD operations example
+-  Jest, Supertest Api Testing
+-  Automatic Swagger Docs Generation
+-  ZOD Validation
+-  Api Versioning
+-  Scalable for large projects
 
 #
 
