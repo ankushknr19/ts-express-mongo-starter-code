@@ -7,7 +7,7 @@ GET http://localhost:5800/unknown
 
 
 ### create a book
- POST http://localhost:5800/example/books
+ POST http://localhost:5800/api/v1/example/books
  Content-Type: application/json
 
 {
@@ -18,21 +18,20 @@ GET http://localhost:5800/unknown
 
 
 ### get all books
-GET http://localhost:5800/example/books
-
+GET http://localhost:5800/api/v1/example/books/
 
 ### get a book
-GET http://localhost:5800/example/books/4
+GET http://localhost:5800/api/v1/example/books/44
 
 
 ### update a book
- PATCH http://localhost:5800/example/books/2
+ PATCH http://localhost:5800/api/v1/example/books/44
  Content-Type: application/json
 
 {
-    "price": 12000
+    "price": 1200
 }
 
 
 ### delete a book
-DELETE http://localhost:5800/example/books/1
+DELETE http://localhost:5800/api/v1/example/books/44

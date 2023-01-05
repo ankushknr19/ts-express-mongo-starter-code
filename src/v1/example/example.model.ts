@@ -1,14 +1,14 @@
 import mongoose from 'mongoose'
 
 export interface BookDocument {
-	bookId: number
+	bookId: string
 	title: string
 	price: number
 }
 
 const BoookSchema = new mongoose.Schema<BookDocument>(
 	{
-		bookId: { type: Number, required: true, unique: true },
+		bookId: { type: String, required: true, unique: true },
 		title: { type: String, required: true },
 		price: { type: Number, required: true },
 	},

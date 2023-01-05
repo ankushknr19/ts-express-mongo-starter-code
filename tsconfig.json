@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es2016",
+		"target": "es2017",
 		"module": "CommonJS",
 		"lib": ["ES6", "ES2017", "ESNext.AsyncIterable"],
 		"sourceMap": true,
@@ -26,5 +26,5 @@
 		"skipLibCheck": true
 	},
 	"exclude": ["node_modules", "./src/**/__tests__"],
-	"include": ["./src/**/*.tsx", "./src/**/*.ts"]
+	"include": ["./src/**/*.ts"]
 }
