@@ -38,7 +38,7 @@ describe('example book model', () => {
 			const res = await request(app).get('/api/v1/example/books/4')
 
 			expect(res.statusCode).toBe(200)
-			expect(res.body.bookId).toBe(4)
+			expect(res.body.bookId).toBe('4')
 		})
 	})
 
@@ -49,7 +49,7 @@ describe('example book model', () => {
 				.send(seed[0])
 
 			expect(res.statusCode).toBe(201)
-			expect(res.body.bookId).toBe(4)
+			expect(res.body.bookId).toBe('4')
 		})
 	})
 

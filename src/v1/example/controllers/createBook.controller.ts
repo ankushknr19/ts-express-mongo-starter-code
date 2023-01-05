@@ -4,7 +4,7 @@ import * as exampleService from '../example.service'
 import { NextFunction, Request, Response } from 'express'
 
 //@desc create a new book
-//@route POST /api/example/books
+//@route POST /api/v1/example/books
 //@access public
 
 export const createBookController = async (

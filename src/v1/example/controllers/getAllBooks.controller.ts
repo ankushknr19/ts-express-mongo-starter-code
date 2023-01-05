@@ -3,7 +3,7 @@ import * as exampleService from '../example.service'
 import { NextFunction, Request, Response } from 'express'
 
 //@desc get all books
-//@route GET /api/example/books
+//@route GET /api/v1/example/books
 //@access public
 export const getAllBooksController = async (
 	_req: Request,

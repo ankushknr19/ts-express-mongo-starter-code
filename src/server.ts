@@ -10,6 +10,7 @@ connectDB().then(() => {
 	})
 })
 
+//excention handling and gracefull shutdown of the server
 async function gracefullShutdown() {
 	await disconnectDB()
 	logger.warn('shutting down server...')

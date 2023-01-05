@@ -4,7 +4,7 @@ import { NextFunction, Request, Response } from 'express'
 import { BookModel } from '../example.model'
 
 //@desc update a book
-//@route PUT /api/books/:bookId
+//@route PUT /api/v1/example/books/:bookId
 //@access public
 export const updateBookController = async (
 	req: Request,

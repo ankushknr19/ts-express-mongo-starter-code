@@ -4,7 +4,7 @@ import * as exampleService from '../example.service'
 import { NextFunction, Request, Response } from 'express'
 
 //@desc delete a book
-//@route DELETE /api/example/books/:bookId
+//@route DELETE /api/v1/example/books/:bookId
 //@access public
 export const deleteBookController = async (
 	req: Request,

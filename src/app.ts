@@ -3,7 +3,7 @@ import v1routes from './v1/routes'
 import createHttpError from 'http-errors'
 import swaggerUi from 'swagger-ui-express'
 import morganLogger from './utils/morganLogger'
-import swaggerDocument from './swagger.example.json'
+import swaggerDocument from './swagger_output.json'
 import { rateLimiter } from './middlewares/rateLimiter'
 import { errorHandler } from './middlewares/errorHandler'
 import express, { NextFunction, Request, Response } from 'express'
@@ -17,20 +17,20 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morganLogger)
 
-//base url
-app.get('/', (_req: Request, res: Response) =>
+//home route
+app.get('/', (_req: Request, res: Response) => {
 	res.send(
 		'<span>Server is running!! Find api docs here - <a href="/api-docs">API DOCS</a></span>'
 	)
-)
+})
 
-//open-api docs route
+//swagger openapi docs route
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
-//api v1 routes
+//api v1 route
 app.use('/api/v1', v1routes)
 
-//if url doesnot exit (unknown route)
+//if url does not exit (unknown route)
 app.use('*', (_req: Request, _res: Response, next: NextFunction) => {
 	next(new createHttpError.NotFound())
 })
