@@ -4,7 +4,7 @@ import {
 	OpenAPIRegistry,
 	extendZodWithOpenApi,
 } from '@asteasolutions/zod-to-openapi'
-import { createBookSchema, updateBookSchema } from './example.schema'
+import { createBookSchema, updateBookSchema } from './example.validation.schema'
 
 extendZodWithOpenApi(z)
 const registry = new OpenAPIRegistry()

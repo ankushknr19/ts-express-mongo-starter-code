@@ -1,7 +1,7 @@
 import express from 'express'
 import * as c from './controllers/index'
 import { validate } from '../../middlewares/zodValidator'
-import { createBookSchema, updateBookSchema } from './example.schema'
+import { createBookSchema, updateBookSchema } from './example.validation.schema'
 
 const router = express.Router()
 
