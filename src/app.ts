@@ -11,6 +11,7 @@ import express, { NextFunction, Request, Response } from 'express'
 const app = express()
 
 //application-level middlewares
+app.disable('x-powered-by')
 app.use(helmet())
 app.use(rateLimiter)
 app.use(express.json())

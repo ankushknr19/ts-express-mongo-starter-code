@@ -1,5 +1,5 @@
 import swaggerAutogen from 'swagger-autogen'
-import { exampleComponents } from '../v1/example/example.schema.openapi'
+import { exampleComponents } from '../v1/example/example.zod.openapi'
 
 const outputFile = 'src/swagger_output.json'
 const endpointsFiles = ['src/v1/routes.ts']
