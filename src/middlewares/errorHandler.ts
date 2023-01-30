@@ -1,3 +1,4 @@
+import { ZodError } from 'zod'
 import logger from '../utils/winstonLogger'
 import { NextFunction, Request, Response } from 'express'
 
@@ -11,12 +12,16 @@ export const errorHandler = (
 ) => {
 	logger.error(error.message)
 
-	const status: number = error.status || 500
+	let status: number = error.status || 500
+	let message: string = error.message
 
-	const message: string =
-		status === 500 ? 'Internal server error.' : error.message
+	if (error instanceof ZodError) {
+		;(status = 422), (message = JSON.parse(message))
+	}
 
-	res.status(status).send({
+	if (status === 500) message = 'Internal server error.'
+
+	res.status(status).json({
 		error: {
 			status,
 			message,

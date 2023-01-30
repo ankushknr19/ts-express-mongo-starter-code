@@ -3,9 +3,10 @@ import { PORT } from './config/env'
 import logger from './utils/winstonLogger'
 import { connectDB, disconnectDB } from './config/database'
 
-app.listen(PORT, async () => {
-	logger.info(`server running at http://localhost:${PORT}`)
-	await connectDB()
+connectDB().then(() => {
+	app.listen(PORT, async () => {
+		logger.info(`server running at http://localhost:${PORT}`)
+	})
 })
 
 //excention handling and gracefull shutdown of the server
