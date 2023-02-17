@@ -21,12 +21,17 @@ app.use(morganLogger)
 //home route
 app.get('/', (_req: Request, res: Response) => {
 	res.send(
-		'<span>Server is running!! Find api docs here - <a href="/api-docs">API DOCS</a></span>'
+		'<span>Server is running!! Find api docs here - <a href="/api/docs">API DOCS</a></span>'
 	)
 })
 
-//swagger openapi docs route
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+//api health-check route
+app.get('/api/healthCheck', (_req: Request, res: Response) => {
+	res.status(200).send('api is working...')
+})
+
+//api documentation route
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 //api v1 route
 app.use('/api/v1', v1routes)

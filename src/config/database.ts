@@ -22,10 +22,6 @@ mongoose.connection.on('connected', () =>
 
 mongoose.connection.on('error', (err) => logger.error(err.message))
 
-mongoose.connection.on('disconnected', () =>
-	logger.warn('Mongodb database disconnected...')
-)
-
 export async function disconnectDB() {
 	try {
 		logger.warn('Mongodb database disconnected...')
