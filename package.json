@@ -6,7 +6,7 @@
 	"scripts": {
 		"build": "tsc",
 		"test": "jest",
-		"swagger-autogen": "node dist/config/swagger.js",
+		"swagger-autogen": "node dist/config/swagger.js && node dist/utils/swagger_output_fix.js",
 		"start": "node dist/server.js",
 		"dev": "ts-node-dev --respawn --transpile-only src/server.ts"
 	},

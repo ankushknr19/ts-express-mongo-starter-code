@@ -1,174 +1,202 @@
 {
-	"openapi": "3.0.0",
-	"info": {
-		"version": "1.0.0",
-		"title": "TS-Express-Mongo Starter Code",
-		"description": "NodeJS/Express starter code with - TypeScript, MongoDB setup, Error/Exception Handler, Logger, API testing example, Swagger Docs example, Mongoose model example, ZOD validation example, CRUD operations example",
-		"contact": {
-			"author": "Ankush Kunwar",
-			"email": "ank.knr@gmail.com"
-		}
-	},
-	"servers": [
-		{
-			"url": "/api/v1"
-		}
-	],
-	"schemes": ["http"],
-	"paths": {
-		"/example/books/": {
-			"get": {
-				"tags": ["Example Books"],
-				"summary": "Get all books",
-				"description": "",
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "Books fetched successfully"
-					},
-					"404": {
-						"description": "Books not found"
-					}
-				}
-			},
-			"post": {
-				"tags": ["Example Books"],
-				"summary": "Create a new book",
-				"description": "",
-				"parameters": [],
-				"responses": {
-					"201": {
-						"description": "Book created successfully"
-					},
-					"409": {
-						"description": "Book with given id already exists"
-					},
-					"422": {
-						"description": "Validation error"
-					}
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/createBook"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/example/books/{bookId}": {
-			"get": {
-				"tags": ["Example Books"],
-				"summary": "Get a book",
-				"description": "",
-				"parameters": [
-					{
-						"name": "bookId",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Book fetched successfully"
-					},
-					"404": {
-						"description": "Book with given id not found"
-					}
-				}
-			},
-			"patch": {
-				"tags": ["Example Books"],
-				"summary": "Update a book",
-				"description": "",
-				"parameters": [
-					{
-						"name": "bookId",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Book updated successfully"
-					},
-					"404": {
-						"description": "Book with given id not found"
-					},
-					"422": {
-						"description": "Validation error"
-					}
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/updateBook"
-							}
-						}
-					}
-				}
-			},
-			"delete": {
-				"tags": ["Example Books"],
-				"summary": "Delete a book",
-				"description": "",
-				"parameters": [
-					{
-						"name": "bookId",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Book deleted successfully"
-					},
-					"404": {
-						"description": "Book with given id not found"
-					}
-				}
-			}
-		}
-	},
-	"components": {
-		"schemas": {
-			"createBook": {
-				"type": "object",
-				"properties": {
-					"bookId": {
-						"type": "string"
-					},
-					"title": {
-						"type": "string"
-					},
-					"price": {
-						"type": "number",
-						"maximum": 10000
-					}
-				},
-				"required": ["bookId", "title", "price"]
-			},
-			"updateBook": {
-				"type": "object",
-				"properties": {
-					"title": {
-						"type": "string"
-					},
-					"price": {
-						"type": "number",
-						"maximum": 10000
-					}
-				}
-			}
-		},
-		"parameters": {}
-	}
+  "info": {
+    "version": "1.0.0",
+    "title": "TS-Express-Mongo Starter Code",
+    "description": "NodeJS/Express starter code with - TypeScript, MongoDB setup, Error/Exception Handler, Logger, API testing example, Swagger Docs example, Mongoose model example, ZOD validation example, CRUD operations example",
+    "contact": {
+      "author": "Ankush Kunwar",
+      "email": "ank.knr@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api/v1"
+    }
+  ],
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/healthCheck": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/example/books/": {
+      "get": {
+        "tags": [
+          "Example Books"
+        ],
+        "summary": "Get all books",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Books fetched successfully"
+          },
+          "404": {
+            "description": "Books not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Example Books"
+        ],
+        "summary": "Create a new book",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Book created successfully"
+          },
+          "409": {
+            "description": "Book with given id already exists"
+          },
+          "422": {
+            "description": "Validation error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createBook"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/example/books/{bookId}": {
+      "get": {
+        "tags": [
+          "Example Books"
+        ],
+        "summary": "Get a book",
+        "description": "",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book fetched successfully"
+          },
+          "404": {
+            "description": "Book with given id not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Example Books"
+        ],
+        "summary": "Update a book",
+        "description": "",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book updated successfully"
+          },
+          "404": {
+            "description": "Book with given id not found"
+          },
+          "422": {
+            "description": "Validation error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateBook"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Example Books"
+        ],
+        "summary": "Delete a book",
+        "description": "",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book deleted successfully"
+          },
+          "404": {
+            "description": "Book with given id not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "createBook": {
+        "type": "object",
+        "properties": {
+          "bookId": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number",
+            "maximum": 10000
+          }
+        },
+        "required": [
+          "bookId",
+          "title",
+          "price"
+        ]
+      },
+      "updateBook": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number",
+            "maximum": 10000
+          }
+        }
+      }
+    },
+    "parameters": {}
+  },
+  "openapi": "3.0.0"
 }
