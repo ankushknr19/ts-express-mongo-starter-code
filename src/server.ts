@@ -9,8 +9,8 @@ connectDB().then(() => {
 	})
 })
 
-//excention handling and gracefull shutdown of the server
-async function gracefullShutdown() {
+//excention handling and graceful shutdown of the server
+async function gracefulShutdown() {
 	await disconnectDB()
 	logger.warn('shutting down server...')
 	process.exit(1)
@@ -24,8 +24,8 @@ process.on('unhandledRejection', (reason: Error) => {
 
 process.on('uncaughtException', (error: Error) => {
 	logger.error(error.message)
-	gracefullShutdown
+	gracefulShutdown()
 })
 
-process.on('SIGINT', gracefullShutdown)
-process.on('SIGTERM', gracefullShutdown)
+process.on('SIGINT', gracefulShutdown)
+process.on('SIGTERM', gracefulShutdown)
